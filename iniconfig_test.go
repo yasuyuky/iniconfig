@@ -1,7 +1,6 @@
 package iniconfig
 
 import (
-	"bytes"
 	"testing"
 )
 
@@ -17,8 +16,7 @@ foobar
 )
 
 func TestBasic(t *testing.T) {
-	b := bytes.NewBufferString(test_ini)
-	c := NewConfig(b)
+	c := NewConfigString(test_ini)
 
 	baz, exist := c.Get("foo", "bar")
 	if !exist {

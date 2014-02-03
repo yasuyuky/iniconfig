@@ -2,6 +2,7 @@ package iniconfig
 
 import (
 	"bufio"
+	"bytes"
 	"fmt"
 	"io"
 	"strings"
@@ -50,6 +51,10 @@ func NewConfig(rd io.Reader) Config {
 		}
 	}
 	return c
+}
+
+func NewConfigString(s string) Config {
+	return NewConfig(bytes.NewBufferString(s))
 }
 
 func (c Config) Get(section, key string) (string, bool) {
